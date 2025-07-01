@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 3: Webサイトからサーバーへメッセージを送信してみよう（PC編）</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Node.jsサーバーを立ててみよう！</h1>
+        <nav>
+            <a href="index.html">目次に戻る</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Chapter 3: Webサイトからサーバーへメッセージを送信してみよう（PC編）</h2>
+            <p>これまでのチャプターで、Node.jsサーバーを起動し、ブラウザでアクセスできることを確認しました。</p>
+            <p>このチャプターでは、**Webサイト（ブラウザ）からテキストデータをサーバーに送信し、そのデータがサーバー側でどのように受け取られ、表示されるか**を体験します。</p>
+            <p>サーバーが「情報を受け取る」役割を理解する第一歩です。</p>
+
+            <h3>1. サーバーコードの準備</h3>
+            <p>まず、Chapter 2で作成した`server.js`ファイルを、以下の内容で**上書き**してください。</p>
+            <p>この新しいコードは、ブラウザにメッセージ送信フォームを提供し、送信されたメッセージを受け取ってターミナルに表示する機能を追加します。</p>
+            <pre><code class="language-javascript">// server.js の新しいコード (このコードでserver.jsを上書きしてください)
+const http = require('http');
+const querystring = require('querystring');
+const fs = require('fs');
+const path = require('path');
+
+const hostname = '0.0.0.0'; // スマートフォンからのアクセスも考慮し0.0.0.0を設定
+const port = 3000;
+
+const server = http.createServer((req, res) => {
+    // 省略：上記「server.js」の完全なコードをここに記載
+    // (Webページに表示する際には、簡潔にするため「...」で省略し、
+    //  別途コードブロックとして完全なコードを掲載すると良いでしょう)
+});
+
+server.listen(port, hostname, () => {
+    console.log(`✨ Node.jsサーバーが起動しました！ ✨`);
+    console.log(`PCからアクセス:   http://localhost:${port}/`);
+    console.log(`ネットワークからアクセス: http://[あなたのPCのIPアドレス]:${port}/`);
+    console.log(`\nサーバーにメッセージが届くと、ここにログが表示されます。`);
+});
+</code></pre>
+            <p class="note">**重要:** 上記は`server.js`の抜粋です。完全なコードは別途提供される`server.js`ファイルの内容をコピー＆ペーストしてください。</p>
+
+            <h3>2. サーバーを再起動</h3>
+            <p>`server.js`を更新したら、必ず現在起動しているNode.jsサーバーを一度停止し（ターミナルで `Ctrl + C` を押す）、再度以下のコマンドで起動してください。</p>
+            <pre><code>node server.js</code></pre>
+
+            <h3>3. PCのブラウザからメッセージを送信</h3>
+            <p>Webブラウザ（Chrome, Firefoxなど）を開き、アドレスバーに以下のURLを入力してアクセスしてください。</p>
+            <pre><code>http://localhost:3000/</code></pre>
+            <p>ブラウザに「サーバーへデータを送信しよう」というフォームが表示されるはずです。</p>
+            <img src="assets/images/form-pc-browser.png" alt="PCブラウザのフォーム画面の例" style="max-width:100%;">
+            <p>入力欄に好きなメッセージを入力し、「サーバーに送信」ボタンをクリックしてください。</p>
+
+            <h3>4. PCのターミナルでサーバーのログを確認！</h3>
+            <p>メッセージを送信すると、ブラウザは「メッセージがサーバーに届きました！」という応答を表示します。</p>
+            <p>そして、最も重要なのは、**Node.jsサーバーを起動しているターミナル（コマンドプロンプト/PowerShell/ターミナル）**です。</p>
+            <p>そこに、あなたが送信したメッセージが「受信メッセージ: "〇〇〇"」という形で表示されているはずです！</p>
+            <img src="assets/images/terminal-received-log.png" alt="サーバーがメッセージを受信したログの例" style="max-width:100%;">
+            <p class="note">このログが表示されたら、サーバーがあなたのメッセージを正しく受け取った証拠です！</p>
+        </section>
+    </main>
+
+    <footer>
+        <p><a href="chapter_02_first_server.html">前のチャプターへ</a> | <a href="index.html">目次に戻る</a> | <a href="chapter_04_mobile_send.html">次のチャプターへ</a></p>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

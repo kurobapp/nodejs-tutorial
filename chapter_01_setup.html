@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 1: Node.jsのインストールと準備</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Node.jsサーバーを立ててみよう！</h1>
+        <nav>
+            <a href="index.html">目次に戻る</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Chapter 1: Node.jsのインストールと準備</h2>
+            <p>まずは、サーバーを動かすために必要なNode.jsをパソコンにインストールしましょう。</p>
+
+            <h3>1. Node.jsのダウンロード</h3>
+            <p><a href="https://nodejs.org/" target="_blank">Node.js公式サイト</a>にアクセスし、**LTS版（推奨版）**をダウンロードしてください。</p>
+            <p>特別な理由がなければ、安定版であるLTS版を選ぶのがおすすめです。</p>
+            <img src="assets/images/nodejs-download.png" alt="Node.jsダウンロード画面の例" style="max-width:100%;">
+            <p class="note">※画像はイメージです。実際のダウンロード画面と異なる場合があります。</p>
+
+            <h3>2. インストーラの実行</h3>
+            <p>ダウンロードしたインストーラを実行し、画面の指示に従ってインストールを進めます。特に設定を変更する必要がなければ、「Next」を押し続けてデフォルト設定で完了させてください。</p>
+
+            <h3>3. インストール確認</h3>
+            <p>インストールが完了したら、正しくインストールされたか確認してみましょう。</p>
+            <p><strong>Windowsの場合:</strong> スタートメニューから「コマンドプロンプト」または「PowerShell」を開きます。</p>
+            <p><strong>macOS / Linuxの場合:</strong> 「ターミナル」を開きます。</p>
+            <p>以下のコマンドを入力してEnterキーを押してください。</p>
+
+            <pre><code>node -v</code></pre>
+            <p>Node.jsのバージョン（例: `v20.11.1` など）が表示されれば成功です。</p>
+
+            <pre><code>npm -v</code></pre>
+            <p>npmのバージョン（例: `10.2.4` など）が表示されれば成功です。</p>
+            <img src="assets/images/terminal-node-npm-check.png" alt="Node.jsとnpmのバージョン確認ターミナル画面の例" style="max-width:100%;">
+            <p class="note">※画像はイメージです。</p>
+        </section>
+    </main>
+
+    <footer>
+        <p><a href="index.html">目次に戻る</a> | <a href="chapter_02_first_server.html">次のチャプターへ</a></p>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

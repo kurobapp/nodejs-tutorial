@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 2: 最初のNode.jsサーバーを作ってみよう</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Node.jsサーバーを立ててみよう！</h1>
+        <nav>
+            <a href="index.html">目次に戻る</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Chapter 2: 最初のNode.jsサーバーを作ってみよう</h2>
+            <p>いよいよ、Node.jsを使って初めてのWebサーバーを作成し、起動してみましょう。</p>
+            <p>このサーバーは、次のチャプターでメッセージを送信するための**入り口となるWebページを提供**します。</p>
+
+            <h3>1. サーバー用ファイルを作成</h3>
+            <p>デスクトップなど、任意の場所に新しいフォルダ（例: `my-node-server`）を作成し、その中に`server.js`という名前のファイルを作成してください。</p>
+            <p>作成した`server.js`ファイルに、**以下のコードをコピー＆ペースト**してください。</p>
+            <p class="note">このコードは、以降のチャプター（Chapter 3とChapter 4）でも使用する最終的なサーバーコードです。</p>
+
+            <h4>`server.js` の内容:</h4>
+            <p>以下のリンクから **`server.js` の完全なコード**を参照し、あなたの`server.js`ファイルにコピー＆ペーストしてください。</p>
+            <p><a href="https://https://github.com/kurobapp/nodejs-tutorial" target="_blank">→ GitHubで `server.js` の完全なコードを見る（新しいタブで開きます）</a></p>
+            <p class="note">上記のリンクはあなたのGitHubユーザー名とリポジトリ名に合わせて変更してください。</p>
+
+            <details>
+                <summary>参考：`server.js` の主要な部分（クリックで表示）</summary>
+                <pre><code class="language-javascript">// server.js (抜粋)
+const http = require('http');
+const querystring = require('querystring');
+const fs = require('fs');
+const path = require('path');
+
+const hostname = '0.0.0.0'; // ローカルPC、ネットワーク両方からのアクセスを許可
+const port = 3000;
+
+const server = http.createServer((req, res) => {
+    if (req.method === 'GET' && req.url === '/') {
+        // トップページ（メッセージ送信フォームのあるページ）を返す処理
+        // chapter_03_send_message.html の内容を読み込んで送信
+        // ... (詳細はGitHubのserver.jsを参照)
+    } else if (req.url.startsWith('/assets/')) {
+        // CSS, JS, 画像などの静的ファイル配信の処理
+        // ... (詳細はGitHubのserver.jsを参照)
+    } else if (req.method === 'POST' && req.url === '/submit-message') {
+        // POSTリクエストでデータを受け取り、ターミナルにログ表示する処理
+        // ... (詳細はGitHubのserver.jsを参照)
+    } else {
+        // その他のリクエスト（404エラーなど）の処理
+        // ... (詳細はGitHubのserver.jsを参照)
+    }
+});
+
+server.listen(port, hostname, () => {
+    console.log(`✨ Node.jsサーバーが起動しました！ ✨`);
+    console.log(`PCからアクセス:   http://localhost:${port}/`);
+    console.log(`ネットワークからアクセス: http://[あなたのPCのIPアドレス]:${port}/ (IPアドレスはPCの環境で確認してください)`);
+    console.log(`\nサーバーにメッセージが届くと、ここにログが表示されます。`);
+});
+</code></pre>
+            </details>
+
+            <h3>2. サーバーを起動</h3>
+            <p>コマンドプロンプトまたはターミナルを開き、先ほど`server.js`を作成したフォルダに移動します。</p>
+            <pre><code>cd [作成したフォルダのパス]</code></pre>
+            <p>例: `cd C:\Users\YourUser\Desktop\my-node-server` または `cd ~/Desktop/my-node-server`</p>
+            <p>フォルダに移動したら、以下のコマンドを実行してサーバーを起動します。</p>
+            <pre><code>node server.js</code></pre>
+            <p>コマンドを実行すると、ターミナルに以下のようなメッセージが表示されるはずです。</p>
+            <pre><code class="language-plaintext">✨ Node.jsサーバーが起動しました！ ✨
+PCからアクセス:   http://localhost:3000/
+ネットワークからアクセス: http://[あなたのPCのIPアドレス]:3000/ (IPアドレスはPCの環境で確認してください)
+
+サーバーにメッセージが届くと、ここにログが表示されます。
+</code></pre>
+            <img src="assets/images/terminal-server-start.png" alt="Node.jsサーバー起動時のターミナル画面の例" style="max-width:100%;">
+            <p class="note">サーバーが起動している間は、このターミナルは閉じないでください。</p>
+
+            <h3>3. PCのブラウザでアクセスして確認</h3>
+            <p>Webブラウザ（Chrome, Firefoxなど）を開き、アドレスバーに以下のURLを入力してアクセスしてください。</p>
+            <pre><code>http://localhost:3000/</code></pre>
+            <p>ブラウザに**「サーバーへデータを送信しよう」という見出しと、メッセージ入力フォームが表示**されれば成功です！</p>
+            <img src="assets/images/form-pc-browser.png" alt="PCブラウザのフォーム画面の例" style="max-width:100%;">
+            <p>この段階では、まだメッセージは送信しません。次のチャプターで、このフォームを使ってメッセージを送信する方法を学びます。</p>
+        </section>
+    </main>
+
+    <footer>
+        <p><a href="chapter_01_setup.html">前のチャプターへ</a> | <a href="index.html">目次に戻る</a> | <a href="chapter_03_send_message.html">次のチャプターへ</a></p>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

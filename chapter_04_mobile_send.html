@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 4: スマートフォンからもメッセージを送信してみよう</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Node.jsサーバーを立ててみよう！</h1>
+        <nav>
+            <a href="index.html">目次に戻る</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Chapter 4: スマートフォンからもメッセージを送信してみよう</h2>
+            <p>Chapter 3でPCのブラウザからメッセージを送信し、サーバーがそれを受け取れることを確認しました。</p>
+            <p>このチャプターでは、**あなたのスマートフォンから、PCで起動しているNode.jsサーバーへメッセージを送信**し、サーバーがPCだけでなくネットワーク上のデバイスからもデータを受け取れることを体験します。</p>
+
+            <h3>1. PCのIPアドレスを確認</h3>
+            <p>スマートフォンからPCのサーバーにアクセスするには、PCの「IPアドレス」が必要です。</p>
+            <p>PCで、ターミナルまたはコマンドプロンプトを開き、以下のコマンドを入力してください。</p>
+            <ul>
+                <li><strong>Windowsの場合:</strong> <pre><code>ipconfig</code></pre></li>
+                <li><strong>macOS / Linuxの場合:</strong> <pre><code>ifconfig</code></pre> または <pre><code>ip addr</code></pre></li>
+            </ul>
+            <p>表示された情報の中から、「IPv4アドレス」または「inetアドレス」を探してください。通常、`192.168.x.x` や `10.0.x.x` のような形式です。</p>
+            <img src="assets/images/pc-ip-address.png" alt="PCのIPアドレス確認画面の例" style="max-width:100%;">
+            <p class="note">例: `192.168.1.5` など。このアドレスをメモしておきましょう。</p>
+
+            <h3>2. ファイアウォールの設定を確認（重要！）</h3>
+            <p>WindowsやmacOSには「ファイアウォール」という機能があり、外部からのアクセスをブロックすることがあります。</p>
+            <p>もしスマートフォンからサーバーにアクセスできない場合は、ファイアウォールが原因かもしれません。一時的にNode.js（または3000番ポート）の通信を許可する設定が必要になる場合があります。</p>
+            <ul>
+                <li><strong>Windows:</strong> 「Windows Defender ファイアウォール」の設定で「アプリを許可」からNode.jsを許可するか、ポート3000を開放します。</li>
+                <li><strong>macOS:</strong> 「システム設定」→「ネットワーク」→「ファイアウォール」で設定を確認します。</li>
+            </ul>
+            <p class="note">※セキュリティ上の理由から、不要なポートは開放しないことが推奨されます。今回は学習目的のため、一時的に設定を変更してください。</p>
+
+            <h3>3. スマートフォンを同じWi-Fiに接続</h3>
+            <p>あなたのスマートフォンが、PCと同じWi-Fiルーターに接続されていることを確認してください。異なるネットワークに接続されていると、アクセスできません。</p>
+
+            <h3>4. スマートフォンのブラウザからアクセスし、メッセージを送信</h3>
+            <p>スマートフォンのWebブラウザ（Safari, Chromeなど）を開き、アドレスバーに**「PCのIPアドレス:ポート番号」**を入力してアクセスしてください。</p>
+            <p>例: あなたのPCのIPアドレスが `192.168.1.5` だったら、<pre><code>http://192.168.1.5:3000/</code></pre> と入力します。</p>
+            <p>PCのブラウザで見たときと同じメッセージ送信フォームが表示されるはずです。</p>
+            <img src="assets/images/form-mobile-browser.png" alt="スマートフォンブラウザのフォーム画面の例" style="max-width:100%;">
+            <p>フォームに好きなメッセージを入力し、「サーバーに送信」ボタンをタップしてください。</p>
+
+            <h3>5. PCのターミナルでサーバーのログを確認！</h3>
+            <p>スマートフォンからメッセージを送信すると、PCで起動しているNode.jsサーバーのターミナルに、送信されたメッセージがログとして表示されるはずです！</p>
+            <img src="assets/images/terminal-received-log-from-mobile.png" alt="サーバーがスマホからのメッセージを受信したログの例" style="max-width:100%;">
+            <p class="note">「送信元IPアドレス」がスマートフォンのIPアドレスになっていることを確認してみましょう！</p>
+            <p>これで、あなたのNode.jsサーバーが、ローカルPCだけでなく、ネットワーク上の他のデバイス（スマートフォン）からもデータを受け取れることを確認できました！</p>
+        </section>
+    </main>
+
+    <footer>
+        <p><a href="chapter_03_send_message.html">前のチャプターへ</a> | <a href="index.html">目次に戻る</a></p>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
