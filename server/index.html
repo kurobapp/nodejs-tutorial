@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.jsテストサーバー</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <main>
+        <section>
+            <h2>メッセージ送信フォーム</h2>
+            <p>このフォームからサーバーへテキストメッセージを送信し、サーバーのコンソールログで確認します。</p>
+
+            <h3>メッセージ送信</h3>
+            <form id="messageForm" action="/submit-message" method="post">
+                <label for="message">メッセージを入力してください:</label><br>
+                <input type="text" id="message" name="message" value="こんにちは、Node.jsサーバー！" size="40"><br><br>
+                <input type="submit" value="サーバーに送信">
+            </form>
+
+            <p style="font-size: 0.9em; color: #666; font-style: italic; margin-top: 15px;">
+                送信されたメッセージは、このNode.jsサーバーを起動しているターミナルに表示されます。
+            </p>
+        </section>
+    </main>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

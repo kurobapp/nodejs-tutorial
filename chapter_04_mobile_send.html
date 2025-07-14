@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapter 4: スマートフォンからもメッセージを送信してみよう</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
     <header>
@@ -17,7 +17,7 @@
     <main>
         <section>
             <h2>Chapter 4: スマートフォンからもメッセージを送信してみよう</h2>
-            <p>Chapter 3でPCのブラウザからメッセージを送信し、サーバーがそれを受け取れることを確認しました。</p>
+            <p>Chapter 3で、PCのブラウザからメッセージを送信し、サーバーがそれを受け取れることを確認しました。</p>
             <p>このチャプターでは、**あなたのスマートフォンから、PCで起動しているNode.jsサーバーへメッセージを送信**し、サーバーがPCだけでなくネットワーク上のデバイスからもデータを受け取れることを体験します。</p>
 
             <h3>1. PCのIPアドレスを確認</h3>
@@ -28,7 +28,6 @@
                 <li><strong>macOS / Linuxの場合:</strong> <pre><code>ifconfig</code></pre> または <pre><code>ip addr</code></pre></li>
             </ul>
             <p>表示された情報の中から、「IPv4アドレス」または「inetアドレス」を探してください。通常、`192.168.x.x` や `10.0.x.x` のような形式です。</p>
-            <img src="assets/images/pc-ip-address.png" alt="PCのIPアドレス確認画面の例" style="max-width:100%;">
             <p class="note">例: `192.168.1.5` など。このアドレスをメモしておきましょう。</p>
 
             <h3>2. ファイアウォールの設定を確認（重要！）</h3>
@@ -44,10 +43,9 @@
             <p>あなたのスマートフォンが、PCと同じWi-Fiルーターに接続されていることを確認してください。異なるネットワークに接続されていると、アクセスできません。</p>
 
             <h3>4. スマートフォンのブラウザからアクセスし、メッセージを送信</h3>
-            <p>スマートフォンのWebブラウザ（Safari, Chromeなど）を開き、アドレスバーに**「PCのIPアドレス:ポート番号」**を入力してアクセスしてください。</p>
+            <p>スマートフォンのWebブラウザ（Safari, Chromeなど）を開き、アドレスバーに「PCのIPアドレス:ポート番号」を入力してアクセスしてください。</p>
             <p>例: あなたのPCのIPアドレスが `192.168.1.5` だったら、<pre><code>http://192.168.1.5:3000/</code></pre> と入力します。</p>
             <p>PCのブラウザで見たときと同じメッセージ送信フォームが表示されるはずです。</p>
-            <img src="assets/images/form-mobile-browser.png" alt="スマートフォンブラウザのフォーム画面の例" style="max-width:100%;">
             <p>フォームに好きなメッセージを入力し、「サーバーに送信」ボタンをタップしてください。</p>
 
             <h3>5. PCのターミナルでサーバーのログを確認！</h3>
@@ -55,6 +53,7 @@
             <img src="assets/images/terminal-received-log-from-mobile.png" alt="サーバーがスマホからのメッセージを受信したログの例" style="max-width:100%;">
             <p class="note">「送信元IPアドレス」がスマートフォンのIPアドレスになっていることを確認してみましょう！</p>
             <p>これで、あなたのNode.jsサーバーが、ローカルPCだけでなく、ネットワーク上の他のデバイス（スマートフォン）からもデータを受け取れることを確認できました！</p>
+            <p>最終更新日：2025年7月14日<br>制作時間：約6時間</p>
         </section>
     </main>
 
